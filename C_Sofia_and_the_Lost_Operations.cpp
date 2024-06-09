@@ -4,45 +4,45 @@ using namespace std;
 int main()
 {
     int limit;
-    cin>>limit;
+    cin >> limit;
     while(limit--)
     {
-        int n,m;
-        bool flag=false;
-        cin>>n;
+        int n, m;
+        cin >> n;
         int origin[n];
-        vector<int>final;
-        unordered_map<int,int>mp; // arrengement of value kuch bhi ho sakta he
-                                  // not even according o the user input
-        for(int i=0; i<n; i++)
-            cin>>origin[i];
-        for(int i=0; i<n; i++)
-        {
-            int x;
-            cin>>x;
-            final.push_back(x);
-        }
-        cin>>m;
+        vector<int> final(n);
+        map<int, int> mp;
+
+        for(int i = 0; i < n; i++)
+            cin >> origin[i];
+        for(int i = 0; i < n; i++)
+            cin >> final[i];
+        cin >> m;
+
         int key;
-        for(int i=0; i<m; i++)
+        for(int i = 0; i < m; i++)
         {
             int x;
-            cin>>x;
+            cin >> x;
             mp[x]++;
-            if(i==m-1)
-                key=x;
+            if(i == m - 1)
+                key = x;
         }
 
-        for(int i=0; i<n; i++)
+        bool flag = false;
+        for(int it : final)
         {
-            if(final[i]==key)
-                flag==true;
+            if(it == key)
+            {
+                flag = true;
+                break;
+            }
         }
 
-        if(flag==true)
+        if(flag)
         {
-            int i;
-            for(i=0; i<n; i++)
+            bool valid = true;
+            for(int i = 0; i < n; i++)
             {
                 if(origin[i] != final[i])
                 {
@@ -50,16 +50,18 @@ int main()
                         mp[final[i]]--;
                     else
                     {
-                        cout<<"NO\n";
+                        valid = false;
                         break;
                     }
                 }
             }
-            if(i==n)
-                cout<<"YES\n";
+            if(valid)
+                cout << "YES\n";
+            else
+                cout << "NO\n";
         }
-        else if(flag==false)
-            cout<<"NO\n";
+        else
+            cout << "NO\n";
         mp.clear();
     }
     return 0;
