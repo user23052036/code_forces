@@ -83,3 +83,15 @@ void merge(int *arr, int low, int mid, int high)
         arr[i]=temp[i-low];
     free(temp);
 }
+
+// int binary_search_modi(int *arr, int num, int low, int high) 
+// {
+//     if (low > high)
+//         return low;
+//     int mid = (low + high) / 2;
+    
+//     if (arr[mid] <= num)
+//         return binary_search_modi(arr, num, mid + 1, high);
+//     else
+//         return binary_search_modi(arr, num, low, mid - 1);
+// }
