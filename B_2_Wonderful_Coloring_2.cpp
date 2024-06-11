@@ -21,7 +21,7 @@ int main()
         for(auto it: ump)
         {
             if(it.second.size() < k)
-                sm_size = sm_size + it.second.size();
+                sm_size += it.second.size();
         }
         int iterator = k*(sm_size/k);
 
